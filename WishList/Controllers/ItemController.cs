@@ -36,25 +36,15 @@ namespace WishList.Controllers
         public IActionResult Create(Item item)
         {
 
-           
-            try
-            {
-                if (ModelState.IsValid)
-                {
+       
+                
                     _context.Items.Add(item);
                     _context.SaveChanges();
                     return RedirectToAction("Index");
-                }
-            }
-            catch (DbUpdateException er /* ex */)
-            {
-                //Log the error (uncomment ex variable name and write a log.
-                ModelState.AddModelError("", "Unable to save changes. " +
-                    "Try again, and if the problem persists " +
-                    "see your system administrator.");
-            }
+                
+           
 
-            return RedirectToAction("Index");
+           
         }
 
         [HttpPost]
@@ -62,22 +52,11 @@ namespace WishList.Controllers
         {
 
             var foundItem =  _context.Items.Find(Id);
-            if (foundItem == null)
-            {
-                
-                return RedirectToAction("Index");
-            }
-            try
-            {
+           
                 _context.Remove(foundItem);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            catch (DbUpdateException er /* ex */)
-            {
-                return RedirectToAction("Index");
-            }
-
+            
            
         }
     }
