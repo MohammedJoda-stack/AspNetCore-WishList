@@ -52,7 +52,7 @@ namespace WishList.Controllers
         {
 
            
-                _context.Items.Remove(_context.Items.Find(Id));
+                _context.Items.Remove(_context.Items.FirstOrDefault(e => e.Id == Id));
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             
