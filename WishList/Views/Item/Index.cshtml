@@ -4,11 +4,7 @@
 <ul>
     @foreach (var item in Model)
     {
-    <li>
-        @item.Description
-        <span></span>
+        <li>@item.Description</li>
         <a asp-action="delete" asp-all-route-id="@item.Id">Delete</a>
-    </li>
-        
     }
 </ul>
