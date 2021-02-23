@@ -36,12 +36,12 @@ namespace WishList.Controllers
         public IActionResult Create(Item item)
         {
 
-            var items = _context.Items;
+           
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _context.Add(item);
+                    _context.Items.Add(item);
                     _context.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -58,10 +58,10 @@ namespace WishList.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(Item item)
+        public IActionResult Delete(int Id)
         {
 
-            var foundItem =  _context.Items.Find(item.Id);
+            var foundItem =  _context.Items.Find(Id);
             if (foundItem == null)
             {
                 
