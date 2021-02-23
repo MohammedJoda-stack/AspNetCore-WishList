@@ -53,7 +53,7 @@ namespace WishList.Controllers
 
             var foundItem =  _context.Items.Find(Id);
            
-                _context.Remove(foundItem);
+                _context.Items.Remove(foundItem);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             
